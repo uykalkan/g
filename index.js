@@ -13,6 +13,7 @@ const componentWithInterface = () => {
                 { slot: '__name__', slotValue: argv._[0] },
             ],
             output: {
+                overwrite: true,
                 path: './output/__name__(pascalCase)',
                 pathAndFileNameDefaultCase: '(pascalCase)',
             }
