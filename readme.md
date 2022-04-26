@@ -5,3 +5,14 @@
 or
 
 `npm i uykalkan/g`
+
+## How to use
+### Examples:
+
+`g my-component`
+
+`g myComponent`
+
+`g myComponent.tsx` (Typescript version)
+
+`g` (by answering the question)
