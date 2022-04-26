@@ -1,7 +1,5 @@
-// generateTemplateFile.js
 const { generateTemplateFilesBatch } = require('generate-template-files');
 const argv = require('simple-argv');
-console.log(argv._[0]);
 
 const componentWithInterface = () => {
     generateTemplateFilesBatch([
@@ -15,13 +13,13 @@ const componentWithInterface = () => {
                 { slot: '__name__', slotValue: argv._[0] },
             ],
             output: {
-                path: './src/__name__(pascalCase)',
+                path: './output/__name__(pascalCase)',
                 pathAndFileNameDefaultCase: '(pascalCase)',
             }
         }
     ]).catch(() => {
-        console.log('Build Error');
-    });
-};
+        console.log('Build Error')
+    })
+}
 
 componentWithInterface("test")
