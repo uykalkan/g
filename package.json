@@ -2,12 +2,13 @@
   "name": "g",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "license": "MIT",
   "dependencies": {
     "generate-template-files": "^3.2.0",
+    "inquirer": "^8.2.3",
     "simple-argv": "^2.0.4"
+  },
+  "bin": {
+    "g": "./index.js"
   }
 }

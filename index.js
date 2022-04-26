@@ -1,26 +1,42 @@
-const { generateTemplateFilesBatch } = require('generate-template-files');
-const argv = require('simple-argv');
+#!/usr/bin/env node
 
-const componentWithInterface = () => {
+'use strict';
+
+const { generateTemplateFilesBatch } = require('generate-template-files');
+const path = require('path')
+const argv = require('simple-argv');
+const inquirer = require('inquirer');
+
+const go = async () => {
+
+    // g boşluk x yazarsa 1.si yazmazsa sor öğren
+
+    const componentName = argv._[0] || (await inquirer.prompt([{
+        name : "componentName",
+        message: "What's your component name? (Examples: hello.tsx, hello.jsx or hello)",
+    }]).then(({componentName}) => componentName))
+
+    const extName = path.extname(componentName).substring(1) || 'jsx'
+
     generateTemplateFilesBatch([
         {
-            option: 'tsx template',
+            option: 'template',
             defaultCase: '(pascalCase)',
             entry: {
-                folderPath: './templates/tsxAndStyle/',
+                folderPath: path.join(__dirname, `templates/${extName}AndStyle`),
             },
             dynamicReplacers: [
-                { slot: '__name__', slotValue: argv._[0] },
+                { slot: '__name__', slotValue: componentName.replace('.' + extName, '') },
             ],
             output: {
                 overwrite: true,
-                path: './output/__name__(pascalCase)',
+                path:  path.join(process.cwd(), '__name__(pascalCase)'),
                 pathAndFileNameDefaultCase: '(pascalCase)',
             }
         }
     ]).catch(() => {
-        console.log('Build Error')
+        console.log('Generate Error')
     })
 }
 
-componentWithInterface("test")
+go()
