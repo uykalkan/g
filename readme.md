@@ -4,7 +4,7 @@
 
 or
 
-`npm i uykalkan/g`
+`npm i -g uykalkan/g`
 
 ## How to use
 ### Examples:
