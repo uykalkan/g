@@ -1,10 +1,10 @@
 # Generate.js
 
-`yarn global add uykalkan/g`
+`yarn global add @uykalkan/g`
 
 or
 
-`npm i -g uykalkan/g`
+`npm i -g @uykalkan/g`
 
 ## How to use
 ### Examples:
